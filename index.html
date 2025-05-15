@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Assignment Landing Page - Warda Marriam</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #663399, #5B3256);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .student-id {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    
+    .temple-icon {
+      margin-bottom: 15px;
+      font-size: 3rem;
+    }
+    
+    /* Main dashboard view */
+    .dashboard-view {
+      display: block;
+    }
+    
+    .assignment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    
+    .assignment-button {
+      background-color: #fff;
+      color: #5B3256;
+      border: 2px solid #5B3256;
+      border-radius: 8px;
+      padding: 20px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .assignment-button:hover {
+      background-color: #5B3256;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Assignment view */
+    .assignment-view {
+      display: none;
+    }
+    
+    .assignment-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+    
+    .assignment-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 300px;
+      padding: 15px;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    
+    .submit-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    
+    .submit-button:hover {
+      background-color: #3e8e41;
+    }
+    
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #5B3256;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .back-button:hover {
+      background-color: #452640;
+    }
+    
+    /* Admin panel */
+    #adminPanel {
+      display: none;
+      margin-top: 20px;
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: left;
+    }
+    
+    #adminPanel input, #adminPanel select {
+      padding: 8px;
+      margin-top: 5px;
+    }
+    
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      padding: 20px 0;
+      border-top: 1px solid #ddd;
+    }
+    
+    .admin-button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    
+    .panel-button {
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      color: white;
+      font-weight: 600;
+    }
+    
+    .save-button {
+      background-color: #4CAF50;
+    }
+    
+    .close-button {
+      background-color: #f44336;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="temple-icon">🏛️</div>
+      <h1>Warda Marriam</h1>
+      <div class="student-id">Student ID: 2417471</div>
+    </header>
+    
+    <!-- Dashboard View -->
+    <div id="dashboardView" class="dashboard-view">
+      <div class="assignment-grid">
+        <button class="assignment-button" data-week="2" data-url="" data-title="Week 2 Assignment">Week 2 Assignment</button>
+        <button class="assignment-button" data-week="3" data-url="" data-title="Week 3 Assignment">Week 3 Assignment</button>
+        <button class="assignment-button" data-week="4" data-url="" data-title="Week 4 Assignment">Week 4 Assignment</button>
+        <button class="assignment-button" data-week="5" data-url="" data-title="Week 5 Assignment">Week 5 Assignment</button>
+        <button class="assignment-button" data-week="6" data-url="" data-title="Week 6 Assignment">Week 6 Assignment</button>
+        <button class="assignment-button" data-week="7" data-url="" data-title="Week 7 Assignment">Week 7 Assignment</button>
+        <button class="assignment-button" data-week="8" data-url="" data-title="Week 8 Assignment">Week 8 Assignment</button>
+        <button class="assignment-button" data-week="9" data-url="" data-title="Week 9 Assignment">Week 9 Assignment</button>
+        <button class="assignment-button" data-week="10" data-url="" data-title="Week 10 Assignment">Week 10 Assignment</button>
+        <button class="assignment-button" data-week="11" data-url="" data-title="Week 11 Assignment">Week 11 Assignment</button>
+      </div>
+    </div>
+    
+    <!-- Assignment View -->
+    <div id="assignmentView" class="assignment-view">
+      <div class="assignment-header">
+        <h2 id="assignmentTitle">Assignment</h2>
+        <p>Warda Marriam | Student ID: 2417471</p>
+      </div>
+      
+      <div class="assignment-content">
+        <h3>Assignment Details</h3>
+        <p>This is the submission page for your assignment. Please enter your work in the text area below or upload your file.</p>
+        
+        <h4 style="margin-top: 20px;">Instructions:</h4>
+        <p>Complete the following tasks related to the assignment material:</p>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li>Task 1: Answer questions based on the lecture material</li>
+          <li>Task 2: Complete the practical exercise</li>
+          <li>Task 3: Write a reflection on what you've learned</li>
+        </ul>
+        
+        <form id="assignmentForm">
+          <h4>Assignment Submission:</h4>
+          <textarea placeholder="Enter your assignment here..."></textarea>
+          
+          <div>
+            <p>Or upload your assignment file:</p>
+            <input type="file" name="assignment-file">
+          </div>
+          
+          <button type="submit" class="submit-button">Submit Assignment</button>
+        </form>
+        
+        <button id="backButton" class="back-button">Back to Dashboard</button>
+      </div>
+    </div>
+    
+    <footer>
+      <p>University Assignment Portal | Academic Year 2024-2025</p>
+      <button id="editLinksButton" class="admin-button">Edit Links</button>
+      
+      <!-- Admin panel for editing links -->
+      <div id="adminPanel">
+        <h3>Edit Assignment Links</h3>
+        <div style="margin: 15px 0;">
+          <label for="weekSelector">Select Week:</label>
+          <select id="weekSelector">
+            <option value="2">Week 2</option>
+            <option value="3">Week 3</option>
+            <option value="4">Week 4</option>
+            <option value="5">Week 5</option>
+            <option value="6">Week 6</option>
+            <option value="7">Week 7</option>
+            <option value="8">Week 8</option>
+            <option value="9">Week 9</option>
+            <option value="10">Week 10</option>
+            <option value="11">Week 11</option>
+          </select>
+        </div>
+        <div style="margin: 10px 0;">
+          <label for="buttonText">Button Text:</label><br>
+          <input type="text" id="buttonText" style="width: 100%;" placeholder="New button text">
+        </div>
+        <div style="margin: 10px 0;">
+          <label for="buttonURL">URL:</label><br>
+          <input type="text" id="buttonURL" style="width: 100%;" placeholder="https://example.com/assignment">
+        </div>
+        <button id="saveChangesButton" class="panel-button save-button">Save Changes</button>
+        <button id="closeAdminButton" class="panel-button close-button">Close</button>
+      </div>
+    </footer>
+  </div>
+  
+  <script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get references to views
+      const dashboardView = document.getElementById('dashboardView');
+      const assignmentView = document.getElementById('assignmentView');
+      const assignmentTitle = document.getElementById('assignmentTitle');
+      const backButton = document.getElementById('backButton');
+      const adminPanel = document.getElementById('adminPanel');
+      const editLinksButton = document.getElementById('editLinksButton');
+      const closeAdminButton = document.getElementById('closeAdminButton');
+      const saveChangesButton = document.getElementById('saveChangesButton');
+      
+      // Setup all assignment buttons
+      const assignmentButtons = document.querySelectorAll('.assignment-button');
+      assignmentButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const week = this.getAttribute('data-week');
+          const url = this.getAttribute('data-url');
+          const title = this.getAttribute('data-title');
+          
+          // If URL is provided and not empty, navigate to external URL
+          if (url && url.trim() !== '') {
+            window.location.href = url;
+            return;
+          }
+          
+          // Otherwise show assignment view
+          assignmentTitle.textContent = title || `Week ${week} Assignment`;
+          dashboardView.style.display = 'none';
+          assignmentView.style.display = 'block';
+          window.scrollTo(0, 0);
+        });
+      });
+      
+      // Setup back button
+      backButton.addEventListener('click', function() {
+        dashboardView.style.display = 'block';
+        assignmentView.style.display = 'none';
+      });
+      
+      // Setup form submission
+      const assignmentForm = document.getElementById('assignmentForm');
+      assignmentForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Assignment submitted successfully!');
+      });
+      
+      // Admin panel functionality
+      editLinksButton.addEventListener('click', function() {
+        adminPanel.style.display = 'block';
+      });
+      
+      closeAdminButton.addEventListener('click', function() {
+        adminPanel.style.display = 'none';
+      });
+      
+      saveChangesButton.addEventListener('click', function() {
+        const weekNum = document.getElementById('weekSelector').value;
+        const newText = document.getElementById('buttonText').value;
+        const newUrl = document.getElementById('buttonURL').value;
+        
+        if (newText.trim() === '' && newUrl.trim() === '') {
+          alert('Please enter either new button text or URL');
+          return;
+        }
+        
+        // Find button for selected week
+        assignmentButtons.forEach(button => {
+          if (button.getAttribute('data-week') === weekNum) {
+            // Update button text if provided
+            if (newText.trim() !== '') {
+              button.textContent = newText;
+              button.setAttribute('data-title', newText);
+            }
+            
+            // Update URL
+            button.setAttribute('data-url', newUrl);
+            
+            alert(`Week ${weekNum} button updated successfully!`);
+            
+            // Clear form fields
+            document.getElementById('buttonText').value = '';
+            document.getElementById('buttonURL').value = '';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
